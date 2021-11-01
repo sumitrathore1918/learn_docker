@@ -1,0 +1,106 @@
+----> Docker:-
+	1)Docker is an open-source centralised platform designed to create,deploy and run applications.
+	2)It uses container on host OS and run applications. It allows to use the same linux kernel as 
+	a system on the hostcomputer,rether than creating a whole virtual OS.
+	3) We can install docker on any OS but docker engine runs natively on linux distribution.
+	4) It is written in go language.
+	5) Docker was first release in march 2013. It is developed by Solomon Hykes and Sebastien Pahl.
+	7) Docker is a tool that performs OS level virtualisation, also known as containerisation.
+	8) Before docker, many users face the problem that a particular code is running in the developer's system but not in the user's system.
+	9) Docker ia a set of platform as a service that uses OS level Virtualization whereas VMware uses hardware and virtualization.
+----> Advantages of Docker:-
+	1) No pre-Allocation of RAM
+	2) CI Efficiency- Docker enables to build a container image and use that same image across every
+	step of the deplotment process.
+	3) Less Cost
+	4) It is light Weight.
+	5) It can run on physical H/W, virtual H/W or on cloud.
+	6) You can reuse the image.
+	7) It took very less time to run container.
+
+----> Disadvantages of docker:-
+	1) Docker is not a good solution for application that requires ricg GUI.
+	2) Difficult to manage large amount of containers.
+	3) Doocker does not provide cross platform compatibility means if the application is designed to run in a docker
+	container on windows, then it can't run on linux or vice-versa.
+	4) Docker is suitable when the development Operating System and testing operating system is different, it should use VM.
+	5) No solution for Data Recovery & Backup.
+
+----> Components of Docker:-
+	1) Docker Daemon:- 
+		Docker Daemon runs on the host OS.
+		It is responsibel for running Containers and to manages docker service.
+		Docker Daemon can Communicate with other daemons.
+	2) Docker Client:-
+		Docker users can interact with docker through a client.
+		Docker client uses Commands and REST API ti communicate with the docker daemon.
+		When a client runs any server command on the docker client terminal, the client terminal sends these docker commands to the docker daemon.
+		It is possible for docker client to communicate with more than one daemon.
+	3) Docker Host:-
+		Docker Host is used to provide an environment to execute and run applications.
+		It contains the docker daemon, docker images, docker containers, Docker networs and storages.
+	4) Docker Hub/Registry:-
+		There are two types of registries in the docker:-
+		a) Public Registry- Public Registry is also called as Docker Hub.
+		b) Private Registry- It is used to share images within the enterprise.
+	5) Docker Images:-
+		Docker images are the ready only binary templates used to create docker container.
+		single File with all dependencies and Configuration required to run a program.
+	6) Ways to create a image:-
+		a) Take image from docker hub
+		b) Create image from docker file.
+		c) Create image from existing docker containers.
+
+----> Dockerfile:-
+	Dockerfile is basically a text file. It contains some set of instruction.
+	It is used in automation of docker image creation.
+	Dockerfile Components:-
+	FROM = For base image, this command must be at the top of the dockerfile.
+	RUN = To execute commands, it will create a layer in image
+	MAINTAINER = Author/Owner/Description
+	COPY = Copy files from local system, we need to provide source, destination(we can't download file from internet and any remote repo.
+	ADD = Similar to COPY but, it provides a feature to download files from internet, alse we extract file at docker image side.
+	EXPOSE = To expose ports such as port 8080 for tomcat,port 80 for nginx, etc
+	WORKDIR = To set working directory for a contianer.
+	CMD = Execute commands but during container creation.
+	ENTRYPOINT = Similar to CMD, but has higher priority over CMD, first commands will be executed.
+	ENV = Environment Variables.
+	VOLUME = Attach volume inside a container
+
+----> Docker Volume:-
+	1) Volume is simply a directory inside a container
+	2) firstly, one have to declare the directory as a volume and than share volume.
+	3) Even if we stop container, still we cann access volume
+	4) volume will be created in one container
+	5) You can declare a directory as a volume only while creating container
+	6) you can't create volume from existing container.
+	7) You can share one volume across number of container.
+	7) Volume will not be included when you update an image.
+	8) One can map volume in two ways:-
+		container----container
+		Host-----container
+
+----> Benefits of Volume:-
+	1)Decoupling Container from storage
+	2)Share volume among different Containers.
+	3)Attach Volume to Container.
+	4)On deleting container, volume doesnot delete.
+
+----> Difference between docker attach and docker exec?
+	1)Docker exec creates a new process in the container environment while docker attach just connect the standard input/output
+	of the main process inside the container to corresponding standard input/output error of current terminal.
+	2)Docker exec is specifically for new things in an already running container, be it a shell or some other process.
+
+----> What is the difference between expose and publish a docker?
+	Basically we have three options-
+		a) Neither specify expose nor -p
+		b) Only specify expose
+		c) specify expose and -p
+	1) If one specify neither expose nor -p, the service in the container will only be accessible from inside the container.
+	2) If you expose a port, the service in the container is not accessible from outside but from inside other docker container
+	so this is good for inter-container communication.
+	3) If one expose and -p a port, the service in the container from anywhere,even outside container.
+		Note:- If one do -p bu do not expose docker does an implicit expose. This is because, if a port is open to the public,
+		it is automatically also open to the docker containers. Hence, -p includes expose.
+
+-------------------------------------------------------------------------------------------------------------------------------------------

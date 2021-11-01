@@ -1,0 +1,121 @@
+----> Install Docker on Linux based Operating Sysytem:-
+	yum -y install docker
+		or
+	apt-get -y install docker
+
+----> To check the status of docker engine:-
+	sysytemctl status docker
+
+----> To start the docker Service:-
+	systemctl start docker
+		or
+	service docker start
+
+----> To see information related to docker engine:-
+	docker info
+
+----> To know docker version Installed:-
+	docker --version
+
+----> To see the images available in local system:-
+	docker images
+
+----> To see the running container in docker engine:-
+	docker ps
+
+----> To see all container in docker engine:-
+	docker ps -a
+
+----> To download a docker image:-
+	docker pull <image_name>
+
+----> To find out images in docker hub:-
+	docker search <image_name>
+
+----> To run a container and give it a name:-
+	docker run -it --name <container_name> <image_name> /bin/bash
+		-i = Interactive
+		-t = Terminal
+		/bin/bash = Shell
+
+----> To deattach from docker container:-
+	ctrl+p+q
+
+----> To start a container:-
+	docker start <container_name>
+
+----> To go inside a container:-
+	docker attach <container_name>
+
+----> To stop a container:-
+	docker stop <container_name>
+
+----> To remove a docker container:-
+	docker rm <container_name>
+
+----> To remove a docker image:-
+	docker rmi <image_name>
+
+----> To create docker Image using docker Container:-
+	docker diff <container_name>
+		&
+	docker commit <container_name> <new_container_name>
+
+----> To create image from Dockerfile:-
+	docker build -t <tag/image_name> .
+
+----> Docker Volume:-
+	1) Container1 to Container2:-
+		docker run -it <container2> --privileged=true --volumes-from <container1> <image_name> /bin/bash
+			&
+		docker run -it -v <volume_path> <image_name> /bin/bash
+
+	2) Host to container:-
+		docker run -it -v <host_volume_path>:<container_volume_path> <image_name> /bin/bash 
+
+----> To list volume on docker machine:-
+	docker volume ls
+
+----> To create a docker volume:-
+	docker volume create <volume_name>
+
+----> To remove a docker volume:-
+	docker volume rm <volume_name>
+
+----> To remove all unused docker volume:-
+	docker volume prune
+
+----> To inspect a docker volume:-
+	docker volume inspect <volume_name>
+
+----> To inspect a docker Container:-
+	docker container inspect <container_name>
+
+----> To execute or enter in a docker container:-
+	docker exec -it <container_name> /bin/bash
+
+----> To map docker container port to host machine port :-
+	docker run -itd -p host:container <image_name> /bin/bash
+
+----> To see the port exposed for container:-
+	docker port <container_name>
+
+----> To login to the dockerhub on docker engine:-
+	docker login
+
+----> To give the tag to the image to be pushed:-
+	docker tag <image_name> docker_id/<tag_name>
+
+----> To push the image on dockerhub:-
+	docker push docker_id/<tag_name>
+
+----> Stop all running Containers:-
+	docker stop $(docker ps -a -q)
+
+----> Delete all stopped Container:-
+	docker rm $(docker ps -a -q)
+
+----> Delete all images:-
+	docker rmi -f $(docker images -q)
+
+------------------------------------------------------------------------------------------------------------------------
